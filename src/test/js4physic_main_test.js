@@ -2,6 +2,33 @@ const assert = require('chai').assert;
 const main = require('../public/js4physic_main');
 
 describe('mechanics testing', () => {
+	
+	describe ('statics testing', () => {
+				
+		it('addParallelForces -> <no values>', () => {
+			assert.equal(main.addParallelForces(null), 0);
+		});
+		
+		it('addParallelForces -> empty array', () => {
+			assert.equal(main.addParallelForces([]), 0);
+		});
+		
+		it('addParallelForces -> 0', () => {
+			assert.equal(main.addParallelForces([0]), 0);
+		});
+		
+		it('addParallelForces -> 30', () => {
+			assert.equal(main.addParallelForces([30]), 30);
+		});
+		
+		it('addParallelForces -> 30, 12', () => {
+			assert.equal(main.addParallelForces([30, 12]), 42);
+		});
+		
+		it('addParallelForces -> 30, 12, 5, -17', () => {
+			assert.equal(main.addParallelForces([30, 12, 5, -11]), 36);
+		});
+	});
 	describe('mass_unit tesing', () => {
 		
 		it('convertTons2Milligramms -> 0', () => {

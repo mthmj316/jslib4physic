@@ -1,7 +1,16 @@
 const timeUnits = require('./time_units');
 const massUnits = require('./mass_unit');
+const statics = require('./statics');
 
 module.exports = {
+	
+	/**
+	 * Adds the passed parallel forces (forces with the same line of action)
+	 * All forces need to be in the same scale
+	 */
+	addParallelForces: function(forces) {
+		return statics.addParallelForces(forces);
+	},
 	
 	/** Converts the given tons to milligramms */
 	convertTons2Milligramms: function(tons){
