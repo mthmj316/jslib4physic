@@ -53,7 +53,7 @@ describe('mechanics testing', () => {
 			});
 
 			it('Input: 23, 39, 30', () => {
-				assert.equal(main.addForces( 23, 39, 30), 155);
+				assert.equal(main.addForces(23, 39, 30), 155);
 			});
 
 			it('Input: 23.0, 39.0, 30.0', () => {
@@ -62,6 +62,18 @@ describe('mechanics testing', () => {
 
 			it('Input: 23.00, 39.00, 30.000', () => {
 				assert.equal(main.addForces(23.00, 39.00, 30.00), 154.79);
+			});
+
+			it('Input: 50.0, 30.0, -29.0', () => {
+				assert.equal(main.addForces(50.0, 30.0, -29.0), 77, 6);
+			});
+
+			it('Input: 50.0, 30.0, 331', () => {
+				assert.equal(main.addForces(50.0, 30.0, 331), 77, 6);
+			});
+
+			it('Input: 50,0, 30,0, 110', () => {
+				assert.equal(main.addForces(50, 0, 30, 0, 110), 77, 6);
 			});
 		});
 
