@@ -30,6 +30,11 @@ module.exports = {
 		
 		const numberOfDecimalPlaces = number_utils.minDecimalPlaces([f1, f2, gamma]);
 
+		console.log(f1);
+		console.log(f2);
+		console.log(fr);
+		console.log(numberOfDecimalPlaces);
+		console.log(fr.toFixed(numberOfDecimalPlaces));
 		return fr.toFixed(numberOfDecimalPlaces);
 	},
 

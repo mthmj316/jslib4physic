@@ -59,6 +59,8 @@ module.exports = {
 		//Contains the minimal decimal places
 		let mdps = 0;
 
+		let isFirst = true;
+		
 		for (const num of numbers) {
 
 			const sNum = num.toString();
@@ -66,11 +68,13 @@ module.exports = {
 			if (sNum.indexOf('.') > -1) {
 
 				const decimalPlaces = sNum.split('.')[1].length;
-
-				if (decimalPlaces < mdps) {
+				
+				if (isFirst || decimalPlaces < mdps) {
 					mdps = decimalPlaces;
 				}
 			}
+			
+			isFirst = false;
 		}
 
 		return mdps;
