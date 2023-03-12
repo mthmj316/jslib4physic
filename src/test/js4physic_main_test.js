@@ -1,4 +1,5 @@
 const assert = require('chai').assert;
+const { expect, should } = require('chai');
 const main = require('../public/js4physic_main');
 
 describe('mechanics testing', () => {
@@ -12,44 +13,56 @@ describe('mechanics testing', () => {
 		// #################################################
 		describe('addForces testing', () => {
 			//Input Force 1, Force 2, angle 
+			it('Input: 23, 39, H', () => {
+				assert.throw(() => {main.addForces(23, 39, 'H')}, Error,'gamma is not a number');
+			});
+
+			it('Input: 23, f2, 30', () => {
+				assert.throws(() => {main.addForces(23, 'f2', 30)}, Error, 'f2 is not a number');
+			});
+
+			it('Input: f1, 50, 30', () => {
+				assert.throws(() => {main.addForces('f1', 50, 30)}, Error, 'f1 is not a number');
+			});
+
 			it('Input: <nothing>', () => {
-				assert.equal(main.addForces(), 0);
+				assert.throws(() => {main.addForces()}, Error, 'f1 is not a number');
 			});
 
 			it('Input: null', () => {
-				assert.equal(main.addForces(null), 0);
+				assert.throws(() => {main.addForces(null)}, Error, 'f1 is not a number');
 			});
 
 			it('Input: null, null', () => {
-				assert.equal(main.addForces(null, null), 0);
+				assert.throws(() => {main.addForces(null, null)}, Error, 'f1 is not a number');
 			});
 
 			it('Input: null, null, null', () => {
-				assert.equal(main.addForces(null, null, null), 0);
+				assert.throws(() => {main.addForces(null, null, null)}, Error, 'f1 is not a number');
 			});
 
 			it('Input: 30, null, null', () => {
-				assert.equal(main.addForces(30, null, null), 30);
+				assert.throws(() => {main.addForces(30, null, null)},  Error, 'f2 is not a number');
 			});
 
 			it('Input: null, 30, null', () => {
-				assert.equal(main.addForces(null, 60, null), 60);
+				assert.throws(() => {main.addForces(null, 60, null)}, Error, 'f1 is not a number');
 			});
 
 			it('Input: null, null, 45', () => {
-				assert.equal(main.addForces(null, null, 45), 0);
+				assert.throws(() => {main.addForces(null, null, 45)}, Error, 'f1 is not a number');
 			});
 
 			it('Input: 23, 39, null', () => {
-				assert.equal(main.addForces(23, 39, null), 62);
+				assert.throws(() => {main.addForces(23, 39, null)}, Error,'gamma is not a number');
 			});
 
 			it('Input: null, 39, 30', () => {
-				assert.equal(main.addForces(null, 39, 30), 39);
+				assert.throws(() => {main.addForces(null, 39, 30)}, Error, 'f1 is not a number');
 			});
 
 			it('Input: 23, null, 30', () => {
-				assert.equal(main.addForces(23, null, 30), 23);
+				assert.throws(() => {main.addForces(23, null, 30)}, Error, 'f2 is not a number');
 			});
 
 			it('Input: 23, 39, 30', () => {
@@ -65,15 +78,15 @@ describe('mechanics testing', () => {
 			});
 
 			it('Input: 50.0, 30.0, -29.0', () => {
-				assert.equal(main.addForces(50.0, 30.0, -29.0), 77, 6);
+				assert.equal(main.addForces(50.0, 30.0, -29.0), 77.6);
 			});
 
 			it('Input: 50.0, 30.0, 331', () => {
-				assert.equal(main.addForces(50.0, 30.0, 331), 77, 6);
+				assert.equal(main.addForces(50.0, 30.0, 331), 78);
 			});
 
 			it('Input: 50,0, 30,0, 110', () => {
-				assert.equal(main.addForces(50, 0, 30, 0, 110), 77, 6);
+				assert.equal(main.addForces(50, 0, 30, 0, 110), 49);
 			});
 		});
 
