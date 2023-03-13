@@ -2,6 +2,27 @@ const number_utils = require('../utils/number_utils');
 
 module.exports = {
 
+	getResultingForce: function(f1, f2, gamma) {
+		
+		let fr = this.addForces(f1, f2, gamma);
+		
+		let sinGamma =  number_utils.sinDegrees(gamma);
+		
+		console.log('sinGamma -> ' + sinGamma);
+		
+		let alpha = number_utils.asinDegrees(f2/fr * sinGamma);
+		let beta = number_utils.asinDegrees(f1/fr * sinGamma);
+		
+		console.log('alpha -> ' + alpha);
+		
+		let result = {};
+		result.fr = fr;
+		result.alpha = alpha;
+		result.beta = beta;
+		
+		return result;
+	},
+
 	/**
 	 * Adds the given forces f1 and f2
 	 * Gamma is the angle at which the two forces are in relation to each other.
@@ -25,10 +46,10 @@ module.exports = {
 				throw new Error('gamma is not a number');
 			}
 		}
-		
-		
-		
-		fr = Math.sqrt(Math.pow(f1,2) + Math.pow(f2,2) + 2*f1*f2*number_utils.cosDegrees(gamma));
+
+
+
+		fr = Math.sqrt(Math.pow(f1, 2) + Math.pow(f2, 2) + 2 * f1 * f2 * number_utils.cosDegrees(gamma));
 
 		return fr;
 	},

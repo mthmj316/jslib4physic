@@ -1,6 +1,40 @@
 module.exports = {
 
 	/**
+	 * Returns for the given sin value the coresponding angle value.
+	 * 
+	 * If sin is not a valid number an Error will be thrown.
+	 */
+	asinDegrees: function(sin) {
+		
+		if (!this.isNumber(sin)) {
+			throw new Error("sin '" + sin + "' is not a number!")
+		}
+		
+		console.log('sin -> ' + sin);
+
+		let asin = Math.asin(sin) * 180 / Math.PI;
+
+		return asin;
+	},
+
+	/**
+	 * Returns for the given angle the cos value.
+	 * 
+	 * If angle is not a valid number an Error will be thrown.
+	 */
+	sinDegrees: function(angle) {
+
+		if (!this.isNumber(angle)) {
+			throw new Error("angle '" + angle + "' is not a number!")
+		}
+
+		let sin = Math.sin(angle / 180 * Math.PI);
+
+		return parseFloat(sin.toFixed(15));
+	},
+
+	/**
 	 * Returns for the given angle the cos value.
 	 * 
 	 * If aangle is not a valid number an Error will be thrown.
@@ -10,7 +44,7 @@ module.exports = {
 		if (!this.isNumber(angle)) {
 			throw new Error("angle '" + angle + "' is not a number!")
 		}
-		
+
 		let cos = Math.cos(angle / 180 * Math.PI);
 
 		return parseFloat(cos.toFixed(15));

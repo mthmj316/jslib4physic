@@ -1,12 +1,16 @@
 const statics = require('./statics');
 
 module.exports = {
-	
+
+	getResultingForce: function(f1, f2, gamma) {
+		return statics.getResultingForce(f1, f2, gamma);
+	},
+
 	/**
 	 * Adds the given forces f1 and f2
 	 * Gamma is the angle at which the two forces are in relation to each other.
 	 */
-	addForces: function(f1, f2, gamma){
+	addForces: function(f1, f2, gamma) {
 		return statics.addForces(f1, f2, gamma);
 	},
 

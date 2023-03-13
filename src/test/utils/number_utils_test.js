@@ -3,6 +3,33 @@ const main = require('../../public/js4physic_main');
 
 describe('number_utils.js testing', () => {
 
+	describe('sinDegrees testing', () => {
+
+		it('Input: n', () => {
+			assert.throws(() => { main.numberUtils.sinDegrees('n') }, Error, 'angle \'n\' is not a number!');
+		});
+
+		it('Input: 0', () => {
+			assert.equal(main.numberUtils.sinDegrees(0), 0);
+		});
+
+		it('Input: 90', () => {
+			assert.equal(main.numberUtils.sinDegrees(90), 1);
+		});
+
+		it('Input: 180', () => {
+			assert.equal(main.numberUtils.sinDegrees(180), 0);
+		});
+
+		it('Input: 270', () => {
+			assert.equal(main.numberUtils.sinDegrees(270), -1);
+		});
+
+		it('Input: 360', () => {
+			assert.equal(main.numberUtils.sinDegrees(360), 0);
+		});
+	});
+
 	describe('cosDegrees testing', () => {
 
 		it('Input: n', () => {

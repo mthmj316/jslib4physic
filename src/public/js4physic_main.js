@@ -4,6 +4,10 @@ const units = require('./content/utils/units');
 
 module.exports.statics = {
 
+	getResultingForce: function(f1, f2, gamma) {
+		return mechanics.getResultingForce(f1, f2, gamma);
+	},
+
 	/**
 	 * Adds the given forces f1 and f2
 	 * Gamma is the angle at which the two forces are in relation to each other.
@@ -32,13 +36,23 @@ module.exports.statics = {
 module.exports.numberUtils = {
 
 	/**
- 	 * Returns for the given angle the cos value.
-	 * 
-	 * If aangle is not a valid number an Error will be thrown.
+ 	* Returns for the given angle the cos value.
+ 	* 
+ 	* If aangle is not a valid number an Error will be thrown.
  	*/
-	cosDegrees: function(radient) {
+	sinDegrees: function(angle) {
 
-		return numberUtils.cosDegrees(radient);
+		return numberUtils.sinDegrees(angle);
+	},
+
+	/**
+	   * Returns for the given angle the cos value.
+	 * 
+	 * If angle is not a valid number an Error will be thrown.
+	  */
+	cosDegrees: function(angle) {
+
+		return numberUtils.cosDegrees(angle);
 	},
 
 	/**
