@@ -26,16 +26,11 @@ module.exports = {
 			}
 		}
 		
-		fr = Math.sqrt(Math.pow(f1,2) + Math.pow(f2,2) + 2*f1*f2*Math.cos(gamma));
 		
-		const numberOfDecimalPlaces = number_utils.minDecimalPlaces([f1, f2, gamma]);
+		
+		fr = Math.sqrt(Math.pow(f1,2) + Math.pow(f2,2) + 2*f1*f2*number_utils.cosDegrees(gamma));
 
-		console.log(f1);
-		console.log(f2);
-		console.log(fr);
-		console.log(numberOfDecimalPlaces);
-		console.log(fr.toFixed(numberOfDecimalPlaces));
-		return fr.toFixed(numberOfDecimalPlaces);
+		return fr;
 	},
 
 	/**
@@ -52,8 +47,8 @@ module.exports = {
 	 */
 	addParallelForces: function(forces) {
 
-		if (forces == null || forces.length == 0) {
-			return 0;
+		if (forces == null) {
+			throw new Error('forces was null');
 		}
 
 		let sum = 0;
