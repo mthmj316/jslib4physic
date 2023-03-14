@@ -64,9 +64,9 @@ describe('mechanics testing', () => {
 				assert.throws(() => { main.statics.getResultingForce(23, null, 30) }, Error, 'f2 is not a number');
 			});
 
-			it.only('Input: f1=23, f2=45, gamma=40', () => {
+			it('Input: f1=23, f2=45, gamma=40', () => {
 
-				let expected = { fr: '63.3', alpha: '24.2', beta: '15.8' };
+				let expected = { fr: '64.3', alpha: '26.7', beta: '13.3' };
 				let actual = main.statics.getResultingForce(23, 45, 40);
 
 				let actualFixed = {};
@@ -81,14 +81,14 @@ describe('mechanics testing', () => {
 
 				let actual = main.statics.getResultingForce(-220, 450, 75);
 
-				let expected = { fr: 446.8, alpha: -28.4, beta: 76.6};
+				let expected = { fr: '446.8', alpha: '76.6', beta: '-28.4'};
 
 				let actualFixed = {};
 				actualFixed.fr = actual.fr.toFixed(1);
 				actualFixed.alpha = actual.alpha.toFixed(1);
 				actualFixed.beta = actual.beta.toFixed(1);
 
-				assert.deepEqual(expected, actual);
+				assert.deepEqual(expected, actualFixed);
 			});
 		});
 
