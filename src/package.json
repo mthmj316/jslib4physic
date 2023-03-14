@@ -1,5 +1,5 @@
 {
 	"scripts": {
-		"test": "nyc mocha"
+		"test": "nyc mocha --recursive"
 	}
 }
