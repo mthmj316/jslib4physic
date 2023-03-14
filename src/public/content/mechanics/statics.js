@@ -1,24 +1,28 @@
 const number_utils = require('../utils/number_utils');
+const math_utils = require('../utils/math_utils');
+
 
 module.exports = {
 
+	/**
+	 * Adds the given forces f1 and f2 trigonometically.
+	 * 
+	 * gamma is the angle bewteen f1 and f2.
+	 * 
+	 * Additionally the alpha and beta angles are calculated, too.
+	 * alpha -> angle between f1 and fr
+	 * beta -> angle between f2 and fr.
+	 */
 	getResultingForce: function(f1, f2, gamma) {
 		
+		//Validation is done in addForces
 		let fr = this.addForces(f1, f2, gamma);
-		
 		let sinGamma =  number_utils.sinDegrees(gamma);
-		
-		console.log('sinGamma -> ' + sinGamma);
-		
-		let alpha = number_utils.asinDegrees(f2/fr * sinGamma);
-		let beta = number_utils.asinDegrees(f1/fr * sinGamma);
-		
-		console.log('alpha -> ' + alpha);
 		
 		let result = {};
 		result.fr = fr;
-		result.alpha = alpha;
-		result.beta = beta;
+		result.alpha = number_utils.asinDegrees(f2/fr * sinGamma);
+		result.beta = number_utils.asinDegrees(f1/fr * sinGamma);
 		
 		return result;
 	},
@@ -47,11 +51,7 @@ module.exports = {
 			}
 		}
 
-
-
-		fr = Math.sqrt(Math.pow(f1, 2) + Math.pow(f2, 2) + 2 * f1 * f2 * number_utils.cosDegrees(gamma));
-
-		return fr;
+		return math_utils.trigonometry.addVectors(f1, f2, gamma);
 	},
 
 	/**

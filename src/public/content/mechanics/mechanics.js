@@ -2,6 +2,15 @@ const statics = require('./statics');
 
 module.exports = {
 
+	/**
+	 * Adds the given forces f1 and f2 trigonometically.
+	 * 
+	 * gamma is the angle bewteen f1 and f2.
+	 * 
+	 * Additionally the alpha and beta angles are calculated, too.
+	 * alpha -> angle between f1 and fr
+	 * beta -> angle between f2 and fr.
+	 */
 	getResultingForce: function(f1, f2, gamma) {
 		return statics.getResultingForce(f1, f2, gamma);
 	},
